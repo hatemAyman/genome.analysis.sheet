@@ -1,0 +1,7 @@
+df <- data.frame(
+  ID = 1:5,
+  Name = c("Alice", "Bob", "Carol", "David", "Eve"),
+  Score = c(85, 90, 88, 92, 95)
+)
+
+print(df)
