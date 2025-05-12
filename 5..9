@@ -1,0 +1,8 @@
+data <- read.table("http://www.r-exercises.com/wp-content/uploads/2015/12/Table0.txt", header = TRUE) 
+
+colnames(data) <- c("Name", "Age", "Height", "Weight", "Sex")
+
+rownames(data) <- data$Name
+data$Name <- NULL
+
+print(data)
