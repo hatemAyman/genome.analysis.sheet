@@ -1,0 +1,69 @@
+
+
+1. Bug in the if condition
+x <- 0:9
+if ( x[1] = 1) {
+  print(x)
+}
+
+
+Bug:
+You're using =  instead of ==  in the if statement.
+
+
+Correct :
+x <- 0:9
+if (x[1] == 1) {
+  print(x)
+}
+
+
+------------------------------------
+
+2. Bug in the recursive factorial function
+myfactorial <- function (x) {
+  if (x == 1)
+    return(1)
+  else
+    return(x * myfactorial(x))
+}
+
+Bug:
+The recursive call has no change in the argument x, leading to infinite recursion.
+
+Correct:
+
+myfactorial <- function(x) {
+  if (x == 1)
+    return(1)
+  else
+    return(x * myfactorial(x - 1))
+}
+
+
+---------------------------
+
+3. Bug in function f
+f <- function(n, p = -1) {
+  if (sqrt(p) == 1)
+    1
+  else
+    0
+}
+f(1)
+
+
+Bug:
+p is -1 by default, and sqrt(-1) returns NaN in R.
+f(1) uses the default value p = -1, which is invalid for sqrt().
+
+
+Correct:
+
+f <- function(n, p = 1) {
+  if (sqrt(p) == 1)
+    return(1)
+  else
+    return(0)
+}
+f(1)
