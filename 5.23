@@ -1,0 +1,75 @@
+1. Read the data into an R object named students
+
+
+students <- read.table("path/to/your/file.txt", header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+
+Alternatively, since we can recreate the dataset from the image, here’s a quick way:
+
+students <- data.frame(
+  height = c(181,160,174,170,172,165,161,167,139,166,162,158,175,181,180,177,173),
+  shoesize = c(44,38,42,43,43,39,38,38,39,38,37,36,42,44,43,43,41),
+  gender = c("male","female","female","male","male","female","female","female","female","female","female",
+             "female","male","male","male","male","male"),
+  population = c("kuopio","kuopio","kuopio","kuopio","kuopio","kuopio","kuopio","tampere","tampere","tampere",
+                 "tampere","tampere","tampere","tampere","tampere","tampere","tampere"),
+  stringsAsFactors = FALSE
+)
+
+
+-------------------------------------------------------
+
+2. Check that R read the file correctly
+
+head(students)
+str(students)
+
+
+-------------------------------------------
+
+3. Print the column headers only
+
+colnames(students)
+
+
+---------------------------------------------
+
+4. Mean height and shoe size
+
+mean(students$height)
+mean(students$shoesize)
+
+
+----------------------------------------
+
+5. Standard deviations
+
+sd(students$height)
+sd(students$shoesize)
+
+
+-------------------------------------------
+
+6. Gender distribution
+
+table(students$gender)
+
+
+--------------------------------------------
+
+7. Check which individuals are males
+
+students[students$gender == "male", ]
+
+
+------------------------------------------------
+
+8. Recode gender to "M" and "F"
+
+students$gender_code <- ifelse(students$gender == "male", "M", "F")
+
+
+-------------------------------------------------
+
+9. Extract subset of males
+
+males <- subset(students, gender_code == "M")
