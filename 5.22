@@ -1,0 +1,59 @@
+Create the initial data frame
+
+df1 <- data.frame(
+  Name = c("Alex", "Lilly", "Mark", "Oliver", "Martha", "Lucas", "Caroline"),
+  Age = c(25, 31, 23, 52, 76, 49, 26),
+  Height = c(177, 163, 190, 179, 163, 183, 164),
+  Weight = c(57, 69, 83, 75, 70, 83, 53),
+  Sex = c("F", "F", "M", "M", "F", "M", "F"),
+  stringsAsFactors = FALSE
+)
+rownames(df1) <- df1$Name
+df1$Name <- NULL
+
+
+--------------------------------------
+Invert Sex for all individuals
+
+df1$Sex <- ifelse(df1$Sex == "F", "M", "F")
+
+
+------------------------------------------
+Create the Working data frame with character type
+
+working_status <- data.frame(
+  Working = c("Yes", "No", "No", "Yes", "Yes", "No", "Yes"),
+  stringsAsFactors = FALSE
+)
+rownames(working_status) <- c("Alex", "Lilly", "Mark", "Oliver", "Martha", "Lucas", "Caroline")
+
+
+----------------------------------------------
+Combine both data frames column-wise
+
+df_final <- cbind(df1, Working = working_status$Working)
+
+
+----------------------------------------------------
+Check the structure (rows, columns, and classes)
+
+dim(df_final)
+
+sapply(df_final, class)
+
+-----------------------------------------------------
+How many rows and columns does the new data frame have?
+
+7 rows and 5 columns (Age, Height, Weight, Sex, Working)
+-------------------------------------------------------
+What class of data is in each column?
+
+Age: numeric
+
+Height: numeric
+
+Weight: numeric
+
+Sex: character
+
+Working: character
