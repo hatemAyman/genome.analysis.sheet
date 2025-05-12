@@ -1,0 +1,31 @@
+
+1. Recode the carcat feature to "Low", "Medium", and "High"
+
+demographics$carcat_recode <- ifelse(demographics$carcat %in% c("Economy", "Compact"), "Low",
+                              ifelse(demographics$carcat %in% c("Standard", "Full-size"), "Medium",
+                              ifelse(demographics$carcat %in% c("Luxury", "Sports"), "High", NA)))
+
+
+----------------------------------------------
+
+2. Get all males who have a college degree
+
+males_college <- subset(demographics, gender == "Male" & educ == "College")
+
+
+----------------------------------------------------
+
+3. Get all retired females
+
+retired_females <- subset(demographics, gender == "Female" & status == "Retired")
+
+
+---------------------------------------------------------
+
+4. Recode the educ feature to numeric (custom scale)
+
+
+educ_levels <- c("Less than High School", "High School", "Some College", "College", "Postgraduate")
+educ_numeric <- setNames(0:4, educ_levels)
+
+demographics$educ_num <- educ_numeric[demographics$educ]
