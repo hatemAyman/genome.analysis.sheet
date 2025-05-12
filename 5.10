@@ -1,0 +1,9 @@
+data("VADeaths")
+
+va_df <- as.data.frame(VADeaths)
+
+va_df$Total <- rowSums(va_df)
+
+va_df <- va_df[, c("Total", setdiff(names(va_df), "Total"))]
+
+print(va_df)
